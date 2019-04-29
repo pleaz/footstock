@@ -14,7 +14,6 @@ class FtstckSpider(scrapy.Spider):
         'ROBOTSTXT_OBEY': False,
         'COOKIES_ENABLED': False,
         'TELNETCONSOLE_ENABLED': False,
-        'CONCURRENT_REQUESTS': 16,
         'USER_AGENT': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36',
     }
 
@@ -24,6 +23,7 @@ class FtstckSpider(scrapy.Spider):
             for card in cards:
                 result = dict()
                 result['Player Name'] = card['playerName']
+                result['Position'] = card['position']
                 result['Club'] = card['club']
                 result['Buy this card'] = card['orderPrices']['currentSellPrice']
                 result['Sell this card'] = card['orderPrices']['currentBuyPrice']
